@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.get("/", async (req, res) => {
     try {
         const response = await axios.get(`${API_URL}/posts`);
-        console.log(response);
+        console.log(response.data);
         res.render("index.ejs", { title: "My Blog", posts: response.data });
     } catch (error) {
         res.status(500).json({ message: "Error fetching posts" });
@@ -31,6 +31,7 @@ app.get("/new", (req, res) => {
 app.post("/posts", async (req, res) => {
     try {
         const response = await axios.post(`${API_URL}/posts`, req.body);
+        console.log(response.data);
         res.redirect("/");
     } catch (error) {
         res.status(500).json({ message: "Error creating post" });
@@ -54,6 +55,20 @@ app.post("/posts/:id", async (req, res) => {
             `${API_URL}/posts/${req.params.id}`,
             req.body,
         );
+        console.log(response.data);
+        res.redirect("/");
+    } catch (error) {
+        res.status(500).json({ message: "Error creating post" });
+    }
+});
+
+// delete post
+app.get("/posts/delete/:id", async (req, res) => {
+    try {
+        const response = await axios.delete(
+            `${API_URL}/posts/delete/${req.params.id}`,
+        );
+        console.log(response.data);
         res.redirect("/");
     } catch (error) {
         res.status(500).json({ message: "Error creating post" });

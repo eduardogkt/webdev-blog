@@ -41,7 +41,7 @@ app.get("/posts", (req, res) => {
     res.json(posts);
 });
 
-// get specific post
+// get a post
 app.get("/posts/:id", (req, res) => {
     const id = parseInt(req.params.id);
     const post = posts.find((post) => post.id === id);
@@ -49,7 +49,7 @@ app.get("/posts/:id", (req, res) => {
     res.json(post);
 });
 
-// post new post
+// post a post
 app.post("/posts", (req, res) => {
     lastId++;
     const newPost = {
@@ -63,7 +63,7 @@ app.post("/posts", (req, res) => {
     res.json(newPost);
 });
 
-// patch post
+// patch a post
 app.patch("/posts/:id", (req, res) => {
     const id = parseInt(req.params.id);
     const index = posts.findIndex((post) => post.id === id);
@@ -77,6 +77,16 @@ app.patch("/posts/:id", (req, res) => {
     };
     posts[index] = updatedPost;
     res.json(updatedPost);
+});
+
+// delete a post
+app.delete("/posts/delete/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const index = posts.findIndex((post) => post.id === id);
+    if (index < 0) res.sendStatus(404).json({ error: "Post not found." });
+
+    const deletedPost = posts.splice(index, 1);
+    res.json(deletedPost);
 });
 
 app.listen(port, () => {
