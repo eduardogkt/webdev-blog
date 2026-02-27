@@ -88,3 +88,28 @@ footer .container {
   color: var(--text-tertiary);
   margin-bottom: 0.5rem;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+#create-post {
+  background-color: var(--text-main);
+  color: var(--bg);
+}
+#create-post:hover {
+  background-color: var(--text-secondary);
+}
+
+.input-text,
+.input-content {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 0.5rem;
+  border-radius: 10px;
+  resize: none;
+}

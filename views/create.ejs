@@ -4,13 +4,15 @@
 <%- include("partials/head.ejs", {title: "Create a new post"}) %>
 
 <body>
-  <div class="container">
-    <h1>Create post</h1>
-    <form id="new-post-form" method="post" action="/posts">
-      <input type="text" name="title" placeholder="Title" required>
-      <textarea name="content" placeholder="Content" required rows="10"></textarea>
-      <input type="text" name="author" placeholder="Author" required>
-      <button class="" type="submit">
+  <div class="container col-6 vh-100">
+    <div class="blog-header">
+      <h1>Create post</h1>
+    </div>
+    <form id="new-post-form" class="form" method="post" action="/posts">
+      <input class="input-text" type="text" name="title" placeholder="Title" required>
+      <input class="input-text" type="text" name="author" placeholder="Author" required>
+      <textarea class="input-content" name="content" placeholder="Content" required rows="10"></textarea>
+      <button id="create-post" class="btn" type="submit">
         Create post
       </button>
     </form>

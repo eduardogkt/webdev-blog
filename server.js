@@ -21,6 +21,19 @@ app.get("/", async (req, res) => {
     }
 });
 
+app.get("/new", (req, res) => {
+    res.render("create.ejs");
+});
+
+app.post("/posts", async (req, res) => {
+    try {
+        const response = await axios.post(`${API_URL}/posts`, req.body);
+        res.redirect("/");
+    } catch (error) {
+        res.status(500).json({ message: "Error creating post" });
+    }
+});
+
 app.listen(port, () => {
     console.log(`Backend server running on http://localhost:${port}`);
 });

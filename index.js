@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import moment from "moment";
 
 const app = express();
 const port = 4000;
@@ -30,12 +31,26 @@ let posts = [
         date: "2023-08-10T09:15:00Z",
     },
 ];
+let lastId = 3;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/posts", (req, res) => {
     res.json(posts);
+});
+
+app.post("/posts", (req, res) => {
+    lastId++;
+    const newPost = {
+        id: lastId,
+        title: req.body.title,
+        content: req.body.content,
+        author: req.body.author,
+        date: moment().format("DD/MM/YYYY HH:mm:ss"),
+    };
+    posts.push(newPost);
+    res.json(newPost);
 });
 
 app.listen(port, (req, res) => {
