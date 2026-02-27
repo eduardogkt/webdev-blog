@@ -36,10 +36,20 @@ let lastId = 3;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// get all posts
 app.get("/posts", (req, res) => {
     res.json(posts);
 });
 
+// get specific post
+app.get("/posts/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const post = posts.find((post) => post.id === id);
+    if (!post) res.sendStatus(404).json({ error: "Post not found." });
+    res.json(post);
+});
+
+// post new post
 app.post("/posts", (req, res) => {
     lastId++;
     const newPost = {
@@ -53,6 +63,22 @@ app.post("/posts", (req, res) => {
     res.json(newPost);
 });
 
-app.listen(port, (req, res) => {
+// patch post
+app.patch("/posts/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const index = posts.findIndex((post) => post.id === id);
+    if (index < 0) res.sendStatus(404).json({ error: "Post not found." });
+
+    const updatedPost = {
+        id: id,
+        title: req.body.title || posts[index].title,
+        author: req.body.author || posts[index].author,
+        content: req.body.content || posts[index].content,
+    };
+    posts[index] = updatedPost;
+    res.json(updatedPost);
+});
+
+app.listen(port, () => {
     console.log(`API running on http://localhost:${port}`);
 });

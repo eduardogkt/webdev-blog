@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include("partials/head.ejs", {title: title}) %>
+<%- include("partials/head.ejs", {title: "Edit post"}) %>
 
 <body>
-  <div class="container">
-    <h1>Edit post</h1>
-    <form id="editForm" method="post" action="/posts/<%=post.id%>">
-      <input type="text" name="title" value="<%=post.title %>">
-      <textarea name="content" rows="10"><%=post.content %></textarea>
-      <input type="text" name="author" value="<%=post.author %>">
-      <button class="full-width" type="submit">
-        <%= submit %>
+  <div class="container col-6 vh-100">
+    <div class="blog-header">
+      <h1>Edit post</h1>
+    </div>
+    <form id="edit-post-form" class="form" method="post" action="/posts/<%=post.id%>">
+      <input class="input-text" type="text" name="title" placeholder="Title" required value="<%=post.title %>">
+      <input class="input-text" type="text" name="author" placeholder="Author" required value="<%=post.author %>">
+      <textarea class="input-content" name="content" placeholder="Content" required rows="10"><%=post.content %></textarea>
+      <button id="create-post" class="btn" type="submit">
+        Edit post
       </button>
     </form>
   </div>
