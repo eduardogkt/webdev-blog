@@ -31,9 +31,9 @@ footer .container {
 
 .btn {
   height: fit-content;
-  border: 1px solid var(--text-main);
+  border: 1px solid var(--text-tertiary);
   background-color: transparent;
-  color: var(--text-secondary);
+  color: var(--text-tertiary);
 }
 
 /* .btn:hover {
