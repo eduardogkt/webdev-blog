@@ -22,6 +22,16 @@ app.get("/", async (req, res) => {
     }
 });
 
+app.get("/posts/:id", async (req, res) => {
+    try {
+        const response = await axios.get(`${API_URL}/posts/${req.params.id}`);
+        console.log(response.data);
+        res.render("post.ejs", { post: response.data });
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching post" });
+    }
+});
+
 // render new post form
 app.get("/new", (req, res) => {
     res.render("create.ejs");

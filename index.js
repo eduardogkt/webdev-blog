@@ -12,7 +12,7 @@ let posts = [
         content:
             "Decentralized Finance (DeFi) is an emerging and rapidly evolving field in the blockchain industry. It refers to the shift from traditional, centralized financial systems to peer-to-peer finance enabled by decentralized technologies built on Ethereum and other blockchains. With the promise of reduced dependency on the traditional banking sector, DeFi platforms offer a wide range of services, from lending and borrowing to insurance and trading.",
         author: "Alex Thompson",
-        date: "01/08/2023 10:00:00",
+        date: "01/08/2023 10:00",
     },
     {
         id: 2,
@@ -20,7 +20,7 @@ let posts = [
         content:
             "Artificial Intelligence (AI) is no longer a concept of the future. It's very much a part of our present, reshaping industries and enhancing the capabilities of existing systems. From automating routine tasks to offering intelligent insights, AI is proving to be a boon for businesses. With advancements in machine learning and deep learning, businesses can now address previously insurmountable problems and tap into new opportunities.",
         author: "Mia Williams",
-        date: "05/08/2023 14:30:00",
+        date: "05/08/2023 14:30",
     },
     {
         id: 3,
@@ -28,7 +28,7 @@ let posts = [
         content:
             "Sustainability is more than just a buzzword; it's a way of life. As the effects of climate change become more pronounced, there's a growing realization about the need to live sustainably. From reducing waste and conserving energy to supporting eco-friendly products, there are numerous ways we can make our daily lives more environmentally friendly. This post will explore practical tips and habits that can make a significant difference.",
         author: "Samuel Green",
-        date: "10/08/2023 09:15:00",
+        date: "10/08/2023 09:15",
     },
 ];
 let lastId = 3;
@@ -57,7 +57,7 @@ app.post("/posts", (req, res) => {
         title: req.body.title,
         content: req.body.content,
         author: req.body.author,
-        date: moment().format("DD/MM/YYYY HH:mm:ss"),
+        date: moment().format("DD/MM/YYYY HH:mm"),
     };
     posts.unshift(newPost);
     res.json(newPost);

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("partials/head.ejs", {title: post.title}) %>
+
+<body>
+  <div class="container col-6 min-vh-100">
+    <div class="post">
+      <div class="blog-header px-0 pb-1 flex-column align-items-start">
+        <div class="post-info">By: <%=post.author%>, <%=post.date %></div>
+        <h1 class="post-title"><%= post.title %></h1>
+      </div>
+      <p class="post-content"><%=post.content%></p>
+      <a class="btn btn-sm" id="edit-post" href="/edit/<%= post.id %>">Edit</a>
+      <a class="btn btn-sm" id="delete-post" href="/posts/delete/<%= post.id %>">Delete</a>
+    </div>
+  </div>
+  <%- include("partials/footer.ejs") %>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+
+</html>

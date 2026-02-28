@@ -12,17 +12,13 @@
     <ul class="post-list">
       <% posts.forEach(post=> { %>
       <li class="post">
+        <div class="post-info">By: <%=post.author%>, <%=post.date %></div>
+
         <h2 class="post-title">
-          <%=post.title%>
+          <a href="/posts/<%= post.id %>"><%=post.title%>
+          </a>
         </h2>
-        <div class="post-info">
-          By: <%=post.author%>, <%=post.date %>
-        </div>
-        <p class="post-content">
-          <%=post.content%>
-        </p>
-        <a class="btn btn-sm" id="edit-post" href="/edit/<%= post.id %>">Edit</a>
-        <a class="btn btn-sm" id="delete-post" href="/posts/delete/<%= post.id %>">Delete</a>
+        <p class="post-content"><%=post.content%></p>
       </li>
       <% }); %>
     </ul>
